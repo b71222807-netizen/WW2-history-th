@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>สงครามโลกครั้งที่ 2 ตอนที่ 1</title>
+    <style>
+      :root {
+        --bg: #0a0a0a;
+        --panel: #121212;
+        --panel2: #171717;
+        --text: #f5f5f5;
+        --muted: #c7c7c7;
+        --red: #e11d48;
+        --red2: #fb7185;
+        --orange: #f59e0b;
+        --line: #2a2a2a;
+        --blue: #60a5fa;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.7;
+      }
+      a {
+        color: inherit;
+      }
+      .page {
+        min-height: 100vh;
+        background: radial-gradient(
+            circle at top,
+            rgba(225, 29, 72, 0.2),
+            transparent 30%
+          ),
+          linear-gradient(180deg, #0a0a0a 0%, #0b0b0b 100%);
+      }
+      .hero {
+        padding: 56px 20px 40px;
+        border-bottom: 1px solid var(--line);
+        background: linear-gradient(
+          135deg,
+          rgba(127, 29, 29, 0.35),
+          rgba(0, 0, 0, 0.95) 60%,
+          rgba(124, 45, 18, 0.18)
+        );
+      }
+      .container {
+        max-width: 980px;
+        margin: 0 auto;
+      }
+      .eyebrow {
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: #f87171;
+        font-size: 13px;
+        margin-bottom: 14px;
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(2.4rem, 6vw, 4.8rem);
+        line-height: 1.05;
+        font-weight: 900;
+      }
+      h1 .accent {
+        display: block;
+        color: var(--red2);
+        margin-top: 10px;
+      }
+      .lead {
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        max-width: 760px;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+      .btn {
+        appearance: none;
+        border: 0;
+        cursor: pointer;
+        border-radius: 16px;
+        padding: 14px 22px;
+        font-size: 1rem;
+        font-weight: 700;
+        transition: 0.2s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .btn-primary {
+        background: var(--red);
+        color: #fff;
+        box-shadow: 0 10px 30px rgba(225, 29, 72, 0.25);
+      }
+      .btn-primary:hover {
+        background: #f43f5e;
+        transform: translateY(-1px);
+      }
+      .btn-ghost {
+        background: transparent;
+        color: #e5e5e5;
+        border: 1px solid #3a3a3a;
+      }
+      .btn-ghost:hover {
+        border-color: #666;
+        transform: translateY(-1px);
+      }
+      main {
+        padding: 42px 20px 72px;
+      }
+      .section {
+        margin-bottom: 56px;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(127, 29, 29, 0.35);
+        border: 1px solid rgba(185, 28, 28, 0.35);
+        color: #fecaca;
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-size: 0.92rem;
+        margin-bottom: 18px;
+      }
+      h2 {
+        margin: 0 0 18px;
+        font-size: clamp(1.8rem, 4vw, 3.1rem);
+        line-height: 1.12;
+        font-weight: 900;
+      }
+      h2 .accent {
+        display: block;
+        color: #f87171;
+      }
+      .content {
+        color: #d4d4d4;
+        font-size: 1.05rem;
+      }
+      .content p {
+        margin: 0 0 18px;
+      }
+      .quote {
+        border-left: 4px solid var(--red);
+        padding: 8px 0 8px 18px;
+        margin: 12px 0 18px;
+        color: #fff;
+        font-size: 1.4rem;
+        font-style: italic;
+        font-weight: 700;
+      }
+      .link {
+        color: #facc15;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      .link:hover {
+        color: #fde047;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+      }
+      .card {
+        background: linear-gradient(180deg, #141414, #101010);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 24px;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+      }
+      .card h3 {
+        margin: 0 0 12px;
+        font-size: 1.3rem;
+      }
+      .card ul {
+        margin: 0;
+        padding-left: 20px;
+        color: #d4d4d4;
+      }
+      .card li {
+        margin: 8px 0;
+      }
+      .card.red {
+        border-color: rgba(185, 28, 28, 0.3);
+        background: linear-gradient(180deg, rgba(69, 10, 10, 0.55), #101010);
+      }
+      .card.blue {
+        border-color: rgba(37, 99, 235, 0.28);
+        background: linear-gradient(180deg, rgba(23, 37, 84, 0.48), #101010);
+      }
+      .card .note {
+        margin-top: 14px;
+        color: #a3a3a3;
+      }
+      .bookmark {
+        display: block;
+        width: 100%;
+        text-align: center;
+        background: #f59e0b;
+        color: #111;
+        padding: 14px 18px;
+        border-radius: 16px;
+        font-weight: 900;
+        text-decoration: none;
+        margin-top: 14px;
+      }
+      .bookmark:hover {
+        background: #fbbf24;
+      }
+      .timeline {
+        border-top: 1px solid var(--line);
+        padding-top: 18px;
+        color: #a3a3a3;
+        text-align: center;
+      }
+      .hidden {
+        display: none !important;
+      }
+      .topbar {
+        margin-bottom: 18px;
+      }
+      .backline {
+        display: inline-flex;
+        border: 1px solid #3a3a3a;
+        color: #e5e5e5;
+        border-radius: 999px;
+        padding: 8px 14px;
+        text-decoration: none;
+        margin-bottom: 18px;
+        background: rgba(255, 255, 255, 0.02);
+      }
+      .backline:hover {
+        border-color: #666;
+      }
+      .mini {
+        color: #a3a3a3;
+        font-size: 0.95rem;
+      }
+      @media (max-width: 760px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .hero {
+          padding: 40px 18px 28px;
+        }
+        main {
+          padding: 28px 18px 60px;
+        }
+        .quote {
+          font-size: 1.2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <section id="intro" class="hero">
+        <div class="container">
+          <div class="eyebrow">History Story Series</div>
+          <h1>
+            สงครามโลกครั้งที่ 2
+            <span class="accent">จุดเริ่มต้นของหายนะโลก</span>
+          </h1>
+          <p class="lead">
+            ตอนที่ 1: ชนวนเหตุและการบุกโปแลนด์ เล่าแบบกระชับ เข้าใจง่าย
+            แต่ยังเก็บรายละเอียดสำคัญไว้ครบ
+          </p>
+          <div class="actions">
+            <button class="btn btn-primary" id="startBtn">เริ่มอ่าน</button>
+          </div>
+        </div>
+      </section>
+
+      <main id="story" class="hidden">
+        <div class="container">
+          <div class="topbar">
+            <a href="#" class="backline" id="backBtn">← กลับหน้าปก</a>
+          </div>
+
+          <section class="section">
+            <div class="pill">⚠️ ยุโรปกำลังเดือด</div>
+            <h2>
+              เมื่อสงครามโลกครั้งที่ 1
+              <span class="accent">ทิ้ง “ระเบิดเวลา” เอาไว้</span>
+            </h2>
+
+            <div class="content">
+              <p>
+                หลังสงครามโลกครั้งที่ 1 จบลงในปี 1918
+                ฝ่ายผู้ชนะซึ่งนำโดยอังกฤษและฝรั่งเศส
+                ได้เรียกประชุมสันติภาพที่กรุงปารีส แล้วออก
+                <a
+                  class="link"
+                  href="https://th.wikipedia.org/wiki/%E0%B8%AA%E0%B8%99%E0%B8%98%E0%B8%B4%E0%B8%AA%E0%B8%B1%E0%B8%8D%E0%B8%8D%E0%B8%B2%E0%B9%81%E0%B8%A7%E0%B8%A3%E0%B9%8C%E0%B8%8B%E0%B8%B2%E0%B8%A2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  สนธิสัญญาแวร์ซาย
+                </a>
+                ในปี 1919 เพื่อบังคับให้เยอรมนีรับผิดชอบความเสียหายจากสงคราม
+              </p>
+              <p>
+                สนธิสัญญานี้ทำให้เยอรมนีต้องจ่ายค่าปฏิกรรมสงครามจำนวนมหาศาล
+                ลดขนาดกองทัพ ห้ามผลิตอาวุธหลายชนิด และเสียดินแดนบางส่วน
+                ผลคือเศรษฐกิจพัง เงินเฟ้อพุ่ง และคนจำนวนมากตกงาน
+              </p>
+              <p>
+                ชาวเยอรมันจำนวนไม่น้อยเริ่มรู้สึกว่าประเทศตัวเองถูกกดทับและถูกบีบคั้น
+                ความแค้นและความสิ้นหวังนี่เอง
+                กลายเป็นเชื้อไฟชั้นดีให้คนหัวรุนแรง
+              </p>
+              <p>
+                และในจังหวะนั้น ชายชื่อ
+                <strong>อดอล์ฟ ฮิตเลอร์</strong> ก็เริ่มไต่ขึ้นมาสู่เวทีอำนาจ
+              </p>
+              <p>
+                ฮิตเลอร์ไม่ได้ยึดอำนาจด้วยการปฏิวัติที่สำเร็จทันที
+                เขาเคยพยายามก่อรัฐประหารแล้วล้มเหลว
+                จากนั้นจึงเปลี่ยนเกมมาใช้การเมือง การหาเสียง และการเลือกตั้ง
+                พรรคนาซีค่อย ๆ ได้คะแนนเพิ่ม จนปี 1933
+                ฮิตเลอร์ได้รับแต่งตั้งเป็นนายกรัฐมนตรี
+                แล้วใช้กฎหมายและเหตุการณ์ฉุกเฉินรวบอำนาจทั้งหมดไว้ในมือ
+              </p>
+              <div class="quote">“เยอรมนีต้องกลับมายิ่งใหญ่อีกครั้ง!”</div>
+              <p>
+                จากนั้นรัฐบาลนาซีก็ค่อย ๆ
+                ฉีกข้อจำกัดของสนธิสัญญาแวร์ซายทิ้งทีละข้อ
+                เยอรมนีเริ่มสร้างกองทัพใหม่ ผลิต
+                <a
+                  class="link"
+                  href="https://s.shopee.co.th/9ALVOGeIVv"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  รถถัง
+                </a>
+                เครื่องบินรบ และอาวุธอีกมากมาย ทั้งที่ถูกห้ามไว้ตั้งแต่แรก
+              </p>
+              <p>
+                อังกฤษและฝรั่งเศสพยายามหลีกเลี่ยงสงครามอีกครั้ง
+                จึงมักเลือกประนีประนอม
+                แต่การยอมมากเกินไปกลับยิ่งทำให้ฮิตเลอร์มั่นใจว่าโลกยังไม่พร้อมหยุดเขา
+              </p>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2>
+              การบุกโปแลนด์
+              <span class="accent">วันที่สงครามเริ่มต้น</span>
+            </h2>
+
+            <div class="grid">
+              <div>
+                <div class="content">
+                  <p>
+                    เช้ามืดวันนั้น กองทัพเยอรมันเปิดฉากบุกโปแลนด์ด้วยยุทธวิธี
+                    <a
+                      class="link"
+                      href="https://s.shopee.co.th/9025Bqv1mC"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      สายฟ้าแลบ (Blitzkrieg)
+                    </a>
+                    คือบุกเร็ว ตีแรง และพยายามทำให้ศัตรูตั้งตัวไม่ทัน
+                  </p>
+                  <p>
+                    รถถัง เครื่องบินรบ และทหารภาคพื้นดินเดินหน้าพร้อมกัน
+                    เมืองต่าง ๆ ถูกโจมตีอย่างหนัก
+                    ทำให้ประชาชนแตกตื่นและหนีตายกันโกลาหล
+                  </p>
+                  <p>
+                    สถานการณ์ยิ่งแย่ลง เมื่อสหภาพโซเวียตบุกเข้ามาจากอีกด้านหนึ่ง
+                    โปแลนด์จึงถูกบีบทั้งสองทางในเวลาไล่เลี่ยกัน
+                  </p>
+                </div>
+              </div>
+
+              <div
+  style="
+    aspect-ratio: 16/9;
+    border-radius: 18px;
+    background-image: url('./polonia.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 18px;
+    position: relative;
+    overflow: hidden;
+  "
+>
+  <div
+    style="
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+    "
+  ></div>
+  <span style="position: relative; z-index: 1;">WW2</span>
+</div>
+</div>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    border-bottom: 1px solid var(--line);
+                    padding-bottom: 10px;
+                    margin-bottom: 10px;
+                  "
+                >
+                  <span class="mini">วันที่เริ่มสงคราม</span>
+                  <strong>1 กันยายน 1939</strong>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    border-bottom: 1px solid var(--line);
+                    padding-bottom: 10px;
+                    margin-bottom: 10px;
+                  "
+                >
+                  <span class="mini">ประเทศที่ถูกบุก</span>
+                  <strong>โปแลนด์</strong>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    border-bottom: 1px solid var(--line);
+                    padding-bottom: 10px;
+                    margin-bottom: 10px;
+                  "
+                >
+                  <span class="mini">กลยุทธ์สำคัญ</span>
+                  <strong>Blitzkrieg</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between">
+                  <span class="mini">ผลลัพธ์</span>
+                  <strong style="color: #f87171"
+                    >สงครามโลกครั้งที่ 2 เริ่มต้น</strong
+                  >
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2>🌍 โลกแบ่งออกเป็น 2 ฝ่าย</h2>
+
+            <div class="grid">
+              <div class="card red">
+                <h3 style="color: #f87171">ฝ่ายอักษะ (Axis Powers)</h3>
+                <ul>
+                  <li>🇩🇪 เยอรมนี — นำโดย อดอล์ฟ ฮิตเลอร์</li>
+                  <li>🇮🇹 อิตาลี — นำโดย เบนิโต มุสโสลินี</li>
+                  <li>🇯🇵 จักรวรรดิญี่ปุ่น — ขยายอำนาจในเอเชีย นำโดย จักรพรรดิ ฮิโรฮิโตะ </li>
+                </ul>
+                <div class="note">
+                  ทั้ง 3 ประเทศต้องการขยายอำนาจและสร้างจักรวรรดิของตัวเอง
+                </div>
+              </div>
+
+              <div class="card blue">
+                <h3 style="color: #93c5fd">ฝ่ายสัมพันธมิตร (Allies)</h3>
+                <ul>
+                  <li>🇬🇧 อังกฤษ</li>
+                  <li>🇫🇷 ฝรั่งเศส</li>
+                  <li>🇵🇱 โปแลนด์</li>
+                  <li>🇨🇳 จีน</li>
+                </ul>
+                <div class="note">
+                  ต่อมาภายหลัง สหรัฐอเมริกาและสหภาพโซเวียตก็เข้าร่วม
+                  ทำให้สงครามใหญ่ขึ้นอีกมาก
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="section">
+            <div class="card" style="border-color: rgba(185, 28, 28, 0.25)">
+              <h3 style="margin-top: 0">
+                อ่านเนื้อหาเชิงลึกเพิ่มเติมได้จากหนังสือ
+              </h3>
+              <p style="color: #707070c2">
+                📖 บันทึกประวัติศาสตร์สงครามโลกครั้งที่ 2 (คลิกเพื่อดูหนังสือใน
+                Shopee)
+              </p>
+              <a
+                class="bookmark"
+                href="https://shopee.co.th/WORLD-WAR-I-II-%E0%B8%AA%E0%B8%87%E0%B8%84%E0%B8%A3%E0%B8%B2%E0%B8%A1%E0%B9%82%E0%B8%A5%E0%B8%81%E0%B8%84%E0%B8%A3%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88-1-2-%E0%B8%89%E0%B8%9A%E0%B8%B1%E0%B8%9A%E0%B8%AA%E0%B8%A1%E0%B8%9A%E0%B8%B9%E0%B8%A3%E0%B8%93%E0%B9%8C-(%E0%B8%9B%E0%B8%81%E0%B9%81%E0%B8%82%E0%B9%87%E0%B8%87)-i.36489237.18532085152"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                📚 ดูหนังสือใน Shopee
+              </a>
+            </div>
+          </section>
+
+          <section class="timeline">
+            <div
+              style="
+                color: #c4c4c4;
+                font-size: 0.9rem;
+                text-transform: uppercase;
+                letter-spacing: 0.15em;
+                margin-bottom: 8px;
+              "
+            >
+              ตอนต่อไป
+            </div>
+            <h3
+              style="
+                margin: 0 0 10px;
+                font-size: clamp(1.7rem, 4vw, 2.5rem);
+                color: #fff;
+              "
+            >
+              เยอรมนีไล่ถล่มยุโรปแบบหยุดไม่อยู่
+            </h3>
+            <p
+              style="
+                margin: 0;
+                color: #a3a3a3;
+                max-width: 780px;
+                margin-inline: auto;
+              "
+            >
+              ฝรั่งเศสแตกในเวลาไม่กี่สัปดาห์
+              และอังกฤษต้องสู้ศึกกลางเวหาที่เดิมพันอนาคตของประเทศ
+            </p>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      const intro = document.getElementById("intro");
+      const story = document.getElementById("story");
+      const startBtn = document.getElementById("startBtn");
+      const backBtn = document.getElementById("backBtn");
+
+      startBtn.addEventListener("click", () => {
+        intro.classList.add("hidden");
+        story.classList.remove("hidden");
+        story.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      backBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        story.classList.add("hidden");
+        intro.classList.remove("hidden");
+        intro.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    </script>
+  </body>
+</html>
